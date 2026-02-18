@@ -6,14 +6,13 @@ namespace VHBurguer.Interfaces
     {
         List<Usuario> Listar();
 
-        // Pode ser que não vena usuário na busca,
-        // Entao colocamos "?"
+        // pode ser que não venha nenhum usuário na busca, 
+        // então colocamos "?"
+        Usuario? ObterPorId(int id); 
 
-        Usuario? ObterPorId(int id);
+        Usuario? ObterPorEmail(string email);
 
-        Usuario? ObterPorEmail( string email);
-
-        bool EmailExiste ( string email );
+        bool EmailExiste(string email);
 
         void Adicionar(Usuario usuario);
 

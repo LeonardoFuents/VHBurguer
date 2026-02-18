@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Domains\\Promocao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\Promocao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\VHBurguer.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:VHBurguer.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Exceptions\\DomainException.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Exceptions\\DomainException.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Domains\\Categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Domains\\Categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Promocao.cs",
+              "DocumentMoniker": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Domains\\Promocao.cs",
+              "RelativeDocumentMoniker": "Domains\\Promocao.cs",
+              "ToolTip": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Domains\\Promocao.cs",
+              "RelativeToolTip": "Domains\\Promocao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T11:02:01.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VHBurguer.http",
+              "DocumentMoniker": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\VHBurguer.http",
+              "RelativeDocumentMoniker": "VHBurguer.http",
+              "ToolTip": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\VHBurguer.http",
+              "RelativeToolTip": "VHBurguer.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-02-18T11:01:58.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T11:00:45.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DomainException.cs",
+              "DocumentMoniker": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Exceptions\\DomainException.cs",
+              "RelativeDocumentMoniker": "Exceptions\\DomainException.cs",
+              "ToolTip": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Exceptions\\DomainException.cs",
+              "RelativeToolTip": "Exceptions\\DomainException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T11:00:11.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Domains\\Categoria.cs",
+              "RelativeDocumentMoniker": "Domains\\Categoria.cs",
+              "ToolTip": "C:\\Users\\48705777801\\Desktop\\VHBurguer_Atualizado\\VH_Burguer\\Domains\\Categoria.cs",
+              "RelativeToolTip": "Domains\\Categoria.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T11:00:03.898Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
