@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using VHBurguer.Applications.Services;
 using VHBurguer.DTOs.ProdutoDto;
+using VHBurguer.Exceptions;
 
 namespace VHBurguer.Controllers
 {
@@ -14,6 +16,19 @@ namespace VHBurguer.Controllers
         public ProdutoController(ProdutoService service)
         {
             _service = service;
+        }
+
+        private int ObterUsuarioIdLogado()
+        {
+            string? idTexto = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrWhiteSpace(idTexto))
+            {
+                throw new DomainException("Usuario nao encontrado.");
+            }
+
+
+            return int.Parse(idTexto);
         }
 
         [HttpGet]
@@ -34,6 +49,22 @@ namespace VHBurguer.Controllers
                 return NotFound();
             }
             return Ok(produto);
+        }
+
+        [HttpGet("{id}/imagem")]
+
+        public ActionResult ObterImagem(int id)
+        {
+            try
+            {
+                var imagem = _service.ObterImagem(id);
+
+                return File(imagem, "image/jpeg");
+            }
+            catch (DomainException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace VHBurguer.Applications.Services
         {
             _repository = repository;
         }
-    }
+    
 
     public List<LerProdutoDto> Listar()
         {
@@ -53,7 +53,7 @@ namespace VHBurguer.Applications.Services
             if (string.IsNullOrWhiteSpace(produtoDto.Descricao))
             {
                 throw new DomainException("Descrição é obrigatória.");
-            }
+            } }
 
 
             public byte[] ObterImagem(int id)
