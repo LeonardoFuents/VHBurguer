@@ -15,13 +15,16 @@ namespace VHBurguer.Applications.Services
         {
             _repository = repository;
         }
-    
 
-    public List<LerProdutoDto> Listar()
+        // Para cada produto que veio do banco
+        // Crie um DTO só com o que a requisição/front precisa.
+        public List<LerProdutoDto> Listar()
         {
             List<Produto> produtos = _repository.Listar();
 
-            List<LerProdutoDto> produtosDto = produtos.Select(ProdutoParaDto.ConverterParaDto).ToList();
+            // SELECT percorre cada Produto e transforma em DTO -> LerProdutoDto
+            List<LerProdutoDto> produtosDto = 
+                produtos.Select(ProdutoParaDto.ConverterParaDto).ToList();
 
             return produtosDto;
         }
@@ -30,52 +33,62 @@ namespace VHBurguer.Applications.Services
         {
             Produto produto = _repository.ObterPorId(id);
 
-            if (produto == null)
+            if(produto == null)
             {
-                throw new DomainException("Produto não encontrado.");
+                throw new DomainException("Produto não encontrado");
             }
 
-            return ProdutoParaDto.ConverterParaDto(produto);
+            // converte o produto encontrado para DTO e devolve
+            return ProdutoParaDto.ConverterParaDto(produto); 
         }
 
         private static void ValidarCadastro(CriarProdutoDto produtoDto)
         {
-            if (string.IsNullOrWhiteSpace(produtoDto.Nome))
+            if(string.IsNullOrWhiteSpace(produtoDto.Nome))
             {
                 throw new DomainException("Nome é obrigatório.");
             }
 
-            if (produtoDto.Preco < 0)
+            if(produtoDto.Preco < 0)
             {
-                throw new DomainException("Preço deve ser maior que 0.");
+                throw new DomainException("Preço deve ser maior que zero.");
             }
 
             if (string.IsNullOrWhiteSpace(produtoDto.Descricao))
             {
                 throw new DomainException("Descrição é obrigatória.");
-            } }
+            }
 
+            if(produtoDto.Imagem == null || produtoDto.Imagem.Length == 0)
+            {
+                throw new DomainException("Imagem é obrigatória.");
+            }
 
-            public byte[] ObterImagem(int id)
+            if(produtoDto.CategoriaIds == null || produtoDto.CategoriaIds.Count == 0)
+            {
+                throw new DomainException("Produto deve ter ao menos uma categoria.");
+            }
+        }
+
+        public byte[] ObterImagem(int id)
         {
             byte[] imagem = _repository.ObterImagem(id);
 
-            if (imagem == null || imagem.Length == 0)
+            if(imagem == null || imagem.Length == 0)
             {
-                throw new DomainException("Imagem não encontrada.");
+                throw new DomainException("Imagem não encontrada");
             }
-            return imagem;
 
+            return imagem;
         }
 
         public LerProdutoDto Adicionar(CriarProdutoDto produtoDto, int usuarioId)
         {
             ValidarCadastro(produtoDto);
 
-            if (_repository.NomeExiste(produtoDto.Nome))
+            if(_repository.NomeExiste(produtoDto.Nome))
             {
-                throw new DomainException("Produto ja existente.");
-
+                throw new DomainException("Produto já existente");
             }
 
             Produto produto = new Produto
@@ -90,7 +103,9 @@ namespace VHBurguer.Applications.Services
 
             _repository.Adicionar(produto, produtoDto.CategoriaIds);
 
-            return ProdutoParaDto.ConverterParaDto(produto);
+            Produto produtoCompleto = _repository.ObterPorId(produto.ProdutoID);
+
+            return ProdutoParaDto.ConverterParaDto(produtoCompleto);
         }
 
         public LerProdutoDto Atualizar(int id, AtualizarProdutoDto produtoDto)
@@ -99,15 +114,15 @@ namespace VHBurguer.Applications.Services
 
             Produto produtoBanco = _repository.ObterPorId(id);
 
-            if (produtoBanco == null)
+            if(produtoBanco == null)
             {
-                throw new DomainException("Produto nao encontrado.");
-
+                throw new DomainException("Produto não encontrado.");
             }
 
-            if (produtoDto.Imagem == null || produtoDto.Imagem.Length == 0)
+            // produtoIdAtual: -> dois pontos serve para passar o valor do parametro
+            if (_repository.NomeExiste(produtoDto.Nome, produtoIdAtual: id))
             {
-                throw new DomainException("Imagem é obrigatória.");
+                throw new DomainException("Já existe outro produto com esse nome.");
             }
 
             if (produtoDto.CategoriaIds == null || produtoDto.CategoriaIds.Count == 0)
@@ -115,16 +130,21 @@ namespace VHBurguer.Applications.Services
                 throw new DomainException("Produto deve ter ao menos uma categoria.");
             }
 
+            if(produtoDto.Preco < 0)
+            {
+                throw new DomainException("Preço deve ser maior que zero.");
+            }
+
             produtoBanco.Nome = produtoDto.Nome;
             produtoBanco.Preco = produtoDto.Preco;
             produtoBanco.Descricao = produtoDto.Descricao;
 
-            if (produtoDto.Imagem != null && produtoDto.Imagem.Length > 0)
+            if(produtoDto.Imagem != null && produtoDto.Imagem.Length > 0)
             {
                 produtoBanco.Imagem = ImagemParaBytes.ConverterImagem(produtoDto.Imagem);
             }
 
-            if (produtoDto.StatusProduto.HasValue)
+            if(produtoDto.StatusProduto.HasValue)
             {
                 produtoBanco.StatusProduto = produtoDto.StatusProduto.Value;
             }
@@ -132,6 +152,7 @@ namespace VHBurguer.Applications.Services
             _repository.Atualizar(produtoBanco, produtoDto.CategoriaIds);
 
             return ProdutoParaDto.ConverterParaDto(produtoBanco);
+
         }
 
         public void Remover(int id)
@@ -140,7 +161,7 @@ namespace VHBurguer.Applications.Services
 
             Produto produto = _repository.ObterPorId(id);
 
-            if (produto != null)
+            if(produto == null)
             {
                 throw new DomainException("Produto não encontrado.");
             }

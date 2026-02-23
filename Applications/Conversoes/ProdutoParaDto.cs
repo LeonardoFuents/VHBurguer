@@ -24,10 +24,5 @@ namespace VHBurguer.Applications.Conversoes
                 UsuarioEmail = produto.Usuario.Email
             };
         }
-
-        internal static object ConverterparaDto(Produto produto, int arg2)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

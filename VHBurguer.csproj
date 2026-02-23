@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Applications\NovaPasta1\**" />
-    <Content Remove="Applications\NovaPasta1\**" />
-    <EmbeddedResource Remove="Applications\NovaPasta1\**" />
-    <None Remove="Applications\NovaPasta1\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="WeatherForecast.cs" />
   </ItemGroup>
 

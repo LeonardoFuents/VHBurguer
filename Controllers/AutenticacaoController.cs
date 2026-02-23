@@ -18,7 +18,6 @@ namespace VHBurguer.Controllers
         }
 
         [HttpPost("login")]
-
         public ActionResult<TokenDto> Login(LoginDto loginDto)
         {
             try
@@ -27,9 +26,8 @@ namespace VHBurguer.Controllers
 
                 return Ok(token);
             }
-
-            catch (DomainException ex)
-            {
+            catch (DomainException ex) {
+                
                 return BadRequest(ex.Message);
             }
         }

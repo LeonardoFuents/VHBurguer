@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Domains",
-    "\\DTOs",
-    "\\Exceptions"
+    ""
   ],
-  "SelectedNode": "\\Domains\\Promocao.cs",
+  "SelectedNode": "\\Controllers",
   "PreviewInSolutionExplorer": false
 }

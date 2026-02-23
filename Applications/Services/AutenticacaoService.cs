@@ -1,5 +1,4 @@
-﻿using Microsoft.IdentityModel.JsonWebTokens;
-using VHBurguer.Applications.Autenticacao;
+﻿using VHBurguer.Applications.Autenticacao;
 using VHBurguer.Domains;
 using VHBurguer.DTOs.AutenticacaoDto;
 using VHBurguer.Exceptions;
@@ -18,6 +17,7 @@ namespace VHBurguer.Applications.Services
             _tokenJwt = tokenJwt;
         }
 
+        // compara a hash SHA256 
         private static bool VerificarSenha(string senhaDigitada, byte[] senhaHashBanco)
         {
             using var sha = System.Security.Cryptography.SHA256.Create();
@@ -28,21 +28,23 @@ namespace VHBurguer.Applications.Services
 
         public TokenDto Login(LoginDto loginDto)
         {
-            Usuario usuario = _repository.ObterPorEmail(loginDto.email);
+            Usuario usuario = _repository.ObterPorEmail(loginDto.Email);
 
             if(usuario == null)
             {
-                throw new DomainException("E-mail ou senha inválidos.");
+                throw new DomainException("E-mail ou senha inválidos");
             }
 
-            if(VerificarSenha(loginDto.senha, usuario.Senha))
+            // comparar a senha digitada com a senha armazenada
+            if(!VerificarSenha(loginDto.Senha, usuario.Senha))
             {
-                throw new DomainException("E-mail ou senha inválidos.");
+                throw new DomainException("E-mail ou senha inválidos");
             }
 
+            // gerando o token
             var token = _tokenJwt.GerarToken(usuario);
 
-            TokenDto novoToken = new TokenDto { Token = token };
+            TokenDto novoToken = new TokenDto {  Token = token };
 
             return novoToken;
         }
