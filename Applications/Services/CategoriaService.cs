@@ -5,7 +5,7 @@ using VHBurguer.Interfaces;
 
 namespace VHBurguer.Applications.Services
 {
-    public class CategoriaService 
+    public class CategoriaService
     {
         private readonly ICategoriaRepository _repository;
 
@@ -18,10 +18,15 @@ namespace VHBurguer.Applications.Services
         {
             List<Categoria> categorias = _repository.Listar();
 
-            List<LerCategoriaDto> categoriaDto = categorias.Select(categoria => new LerCategoriaDto { CategoriaId = categoria.CategoriaID, Nome = categoria.Nome }).ToList();
-            
-            return categoriaDto;
+            // converte cada categoria para LerCategoriaDto
+            List<LerCategoriaDto> categoriaDto = categorias.Select(categoria => new LerCategoriaDto
+            {
+                CategoriaID = categoria.CategoriaID,
+                Nome = categoria.Nome
+            }).ToList();
 
+            // Retorna a lista já convertida em DTO
+            return categoriaDto;
         }
 
         public LerCategoriaDto ObterPorId(int id)
@@ -30,13 +35,13 @@ namespace VHBurguer.Applications.Services
 
             if(categoria == null)
             {
-                throw new DomainException("Categoria não encontrada.");
+                throw new DomainException("Categoria não encontrada");
             }
 
             LerCategoriaDto categoriaDto = new LerCategoriaDto
             {
-                CategoriaId = categoria.CategoriaID,
-                Nome = categoria.Nome,
+                CategoriaID = categoria.CategoriaID,
+                Nome = categoria.Nome
             };
 
             return categoriaDto;
@@ -44,9 +49,9 @@ namespace VHBurguer.Applications.Services
 
         private static void ValidarNome(string nome)
         {
-            if (string.IsNullOrWhiteSpace(nome))
+            if(string.IsNullOrWhiteSpace(nome))
             {
-                throw new DomainException("Nome é obrigatorio");
+                throw new DomainException("Nome é obrigatório.");
             }
         }
 
@@ -54,41 +59,38 @@ namespace VHBurguer.Applications.Services
         {
             ValidarNome(criarDto.Nome);
 
-            if (_repository.NomeExiste(criarDto.Nome))
+            if(_repository.NomeExiste(criarDto.Nome))
             {
-                throw new DomainException("Categoria ja existente.");
-
+                throw new DomainException("Categoria já existente.");
             }
 
             Categoria categoria = new Categoria
             {
                 Nome = criarDto.Nome,
-
             };
 
-            _repository.adicionar(categoria);
-
+            _repository.Adicionar(categoria);
         }
 
         public void Atualizar(int id, CriarCategoriaDto criarDto)
-        {
-            ValidarNome(criarDto.Nome);
+        { 
+            ValidarNome(criarDto.Nome); // valida se o campo nome foi preenchido
 
             Categoria categoriaBanco = _repository.ObterPorId(id);
 
-            if(categoriaBanco != null)
+            if(categoriaBanco == null)
             {
-                throw new DomainException("Categoria nao foi encontrada.");
-
+                throw new DomainException("Categoria não encontrada.");
             }
 
-            if(_repository.NomeExiste(criarDto.Nome, categoriaIdAtual: id))
+            // categoriaIdAtual: id -> categoriaIdAtual recebe id
+            if (_repository.NomeExiste(criarDto.Nome, categoriaIdAtual: id))
             {
-                throw new DomainException("Ja existe outra categoria com este nome.");
+                throw new DomainException("Já existe outra categoria com esse nome.");
             }
 
             categoriaBanco.Nome = criarDto.Nome;
-            _repository.atualizar(categoriaBanco);
+            _repository.Atualizar(categoriaBanco);
         }
 
         public void Remover(int id)
@@ -98,12 +100,10 @@ namespace VHBurguer.Applications.Services
             if(categoriaBanco == null)
             {
                 throw new DomainException("Categoria não encontrada.");
-
             }
 
             _repository.Remover(id);
         }
-
 
     }
 }

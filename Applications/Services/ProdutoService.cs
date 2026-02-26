@@ -103,9 +103,7 @@ namespace VHBurguer.Applications.Services
 
             _repository.Adicionar(produto, produtoDto.CategoriaIds);
 
-            Produto produtoCompleto = _repository.ObterPorId(produto.ProdutoID);
-
-            return ProdutoParaDto.ConverterParaDto(produtoCompleto);
+            return ProdutoParaDto.ConverterParaDto(produto);
         }
 
         public LerProdutoDto Atualizar(int id, AtualizarProdutoDto produtoDto)

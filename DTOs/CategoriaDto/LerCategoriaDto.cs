@@ -2,8 +2,7 @@
 {
     public class LerCategoriaDto
     {
-
-        public int CategoriaId { get; set; }
+        public int CategoriaID { get; set; }
 
         public string Nome { get; set; } = null!;
     }

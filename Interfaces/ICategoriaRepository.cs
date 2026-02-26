@@ -9,9 +9,8 @@ namespace VHBurguer.Interfaces
 
         bool NomeExiste(string nome, int? categoriaIdAtual = null);
 
-        void adicionar (Categoria categoria);
-        void atualizar (Categoria categoria);
-
+        void Adicionar(Categoria categoria);
+        void Atualizar(Categoria categoria);
         void Remover(int id);
     }
 }
